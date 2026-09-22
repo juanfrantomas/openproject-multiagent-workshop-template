@@ -1,0 +1,22 @@
+# Secretos
+.env
+*.env
+openproject.env
+secrets/
+.codex/auth.json
+
+# Estado local del workshop
+.local/
+tmp/
+logs/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/

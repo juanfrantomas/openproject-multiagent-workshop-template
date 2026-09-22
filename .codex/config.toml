@@ -1,0 +1,47 @@
+[agents]
+max_concurrent_threads_per_session = 6
+default_subagent_model = "gpt-5.6-terra"
+
+[mcp_servers.openproject]
+command = "openproject-ce-mcp"
+startup_timeout_sec = 20
+env_vars = ["OPENPROJECT_API_TOKEN"]
+
+[mcp_servers.openproject.env]
+
+OPENPROJECT_BASE_URL = "https://ianegociosocios.openproject.com"
+
+# Durante el bootstrap del workshop los participantes todavía
+# no conocen el identificador de su proyecto.
+#
+# Sus permisos reales siguen estando limitados por el usuario
+# y el API token personal de OpenProject.
+
+OPENPROJECT_READ_PROJECTS = "*"
+OPENPROJECT_WRITE_PROJECTS = "*"
+
+# Permitimos crear proyectos y gestionar work packages.
+
+OPENPROJECT_ENABLE_PROJECT_WRITE = "true"
+OPENPROJECT_ENABLE_WORK_PACKAGE_WRITE = "true"
+
+# Operaciones administrativas que no necesitamos durante el workshop.
+
+OPENPROJECT_ENABLE_MEMBERSHIP_WRITE = "false"
+OPENPROJECT_ENABLE_VERSION_WRITE = "false"
+OPENPROJECT_ENABLE_BOARD_WRITE = "false"
+
+[mcp_servers.openproject.tools.list_projects]
+approval_mode = "approve"
+
+[mcp_servers.openproject.tools.get_project]
+approval_mode = "approve"
+
+[mcp_servers.openproject.tools.get_project_work_package_context]
+approval_mode = "approve"
+
+[mcp_servers.openproject.tools.list_work_packages]
+approval_mode = "approve"
+
+[mcp_servers.openproject.tools.list_documents]
+approval_mode = "approve"

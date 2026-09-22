@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ENV_FILE="$HOME/.config/openproject-workshop/openproject.env"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+if [[ ! -r "$ENV_FILE" ]]; then
+    echo "ERROR: no encuentro $ENV_FILE"
+    exit 1
+fi
+
+set -a
+source "$ENV_FILE"
+set +a
+
+cd "$REPO_DIR"
+exec codex "$@"
